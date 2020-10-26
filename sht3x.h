@@ -46,7 +46,7 @@ typedef struct {
 } sht3x_handle_t;
 
 /**
- * Initialises an SHT3x device by checking if the status register can be read.
+ * Checks if an SHT3x is reachable using the given handle.
  * @param handle Handle to the SHT3x device.
  * @return True on success, false otherwise.
  */
