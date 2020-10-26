@@ -39,19 +39,32 @@ typedef struct {
 
 	/**
 	 * The I2C device address.
-	 * @see{PCA9865_I2C_DEVICE_ADDRESS_ADDR_PIN_LOW}
+	 * @see{PCA9865_I2C_DEVICE_ADDRESS_ADDR_PIN_LOW} and @see{SHT3X_I2C_DEVICE_ADDRESS_ADDR_PIN_HIGH}
 	 */
 	uint16_t device_address;
 
 } sht3x_handle_t;
 
 /**
- * Initialises an SHT3x device.
- * @param handle Handle to a SHT3x device.
+ * Initialises an SHT3x device by checking if the status register can be read.
+ * @param handle Handle to the SHT3x device.
  * @return True on success, false otherwise.
  */
 bool sht3x_init(sht3x_handle_t *handle);
 
+/**
+ * Takes a single temperature and humidity measurement.
+ * @param handle Handle to the SHT3x device.
+ * @param temperature Pointer to the storage location for the sampled temperature.
+ * @param humidity Pointer to the storage location for the sampled humidity.
+ * @return True on success, false otherwise.
+ */
 bool sht3x_read_temperature_and_humidity(sht3x_handle_t *handle, float *temperature, float *humidity);
 
+/**
+ * Turns the SHT3x's internal heater on or of.
+ * @param handle Handle to the SHT3x device.
+ * @param enable True to enable to heater, false to disable it.
+ * @return True on success, false otherwise.
+ */
 bool sht3x_set_header_enable(sht3x_handle_t *handle, bool enable);
