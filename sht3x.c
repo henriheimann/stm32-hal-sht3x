@@ -88,7 +88,7 @@ bool sht3x_read_temperature_and_humidity(sht3x_handle_t *handle, float *temperat
 		return false;
 	}
 
-	int16_t temperature_raw = (int16_t)uint8_to_uint16(buffer[0], buffer[1]);
+	uint16_t temperature_raw = uint8_to_uint16(buffer[0], buffer[1]);
 	uint16_t humidity_raw = uint8_to_uint16(buffer[3], buffer[4]);
 
 	*temperature = -45.0f + 175.0f * (float)temperature_raw / 65535.0f;
